@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 require('./routes/book.routes')(app);
+require('./routes/shelf.routes')(app);
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 
