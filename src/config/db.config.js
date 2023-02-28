@@ -1,4 +1,4 @@
-const db = require("../../config/db.config.json")
+const db = require("../../config_env/db.config.json")
 module.exports = {
     HOST: db.HOST,
     USER: db.USER,
