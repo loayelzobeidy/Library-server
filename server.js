@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-
+require("dotenv").config();
 var corsOptions = {
   origin: "http://localhost:8081"
 };
@@ -15,13 +15,13 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-require('./routes/book.routes')(app);
-require('./routes/shelf.routes')(app);
-require('./routes/auth.routes')(app);
-require('./routes/user.routes')(app);
+require('./src/routes/book.routes')(app);
+require('./src/routes/shelf.routes')(app);
+require('./src/routes/auth.routes')(app);
+require('./src/routes/user.routes')(app);
 
 
-const db = require("./models");
+const db = require("./src/models");
 db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");

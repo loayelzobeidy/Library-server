@@ -1,16 +1,17 @@
 const db = require("../../config_env/db.config.json")
 module.exports = {
-    HOST: db.HOST,
-    USER: db.USER,
-    PASSWORD: db.PASSWORD,
-    DB: db.DB,
-    dialect: db.dialect,
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
+  HOST: process.env.DB_HOST,
+  USER: process.env.DB_USER,
+  PASSWORD: process.env.DB_PASSWORD,
+  DB: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
   };
   
   
