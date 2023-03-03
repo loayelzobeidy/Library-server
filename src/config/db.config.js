@@ -1,10 +1,12 @@
-const db = require("../../config_env/db.config.json")
+console.log(process.env.MYSQLDB_HOST,
+  process.env.MYSQLDB_USER,
+   process.env.MYSQLDB_ROOT_PASSWORD,
+ process.env.MYSQLDB_DATABASE)
 module.exports = {
-  HOST: process.env.DB_HOST,
-  USER: process.env.DB_USER,
-  PASSWORD: process.env.DB_PASSWORD,
-  DB: process.env.DB_NAME,
-  port: process.env.DB_PORT,
+  HOST: process.env.MYSQLDB_HOST,
+  USER: process.env.MYSQLDB_USER,
+  PASSWORD: process.env.MYSQLDB_ROOT_PASSWORD,
+  DB: process.env.MYSQLDB_DATABASE,
   dialect: "mysql",
   pool: {
     max: 5,
