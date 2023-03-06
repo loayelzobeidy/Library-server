@@ -1,20 +1,22 @@
+const { authJwt } = require("../middleware");
+
 module.exports = app => {
     const shelfs = require("../controllers/shelf.controller.js");
   
     var router = require("express").Router();
 
-    router.post("/", shelfs.create);
+    router.post("/",  [authJwt.verifyToken],shelfs.create);
   
-    router.get("/", shelfs.findAll);
+    router.get("/",  [authJwt.verifyToken],shelfs.findAll);
   
   
-    router.get("/:id", shelfs.findOne);
+    router.get("/:id", [authJwt.verifyToken], shelfs.findOne);
   
-    router.put("/:id", shelfs.update);
+    router.put("/:id", [authJwt.verifyToken], shelfs.update);
   
-    router.delete("/:id", shelfs.delete);
+    router.delete("/:id",  [authJwt.verifyToken],shelfs.delete);
   
-    router.delete("/", shelfs.deleteAll);
+    router.delete("/", [authJwt.verifyToken], shelfs.deleteAll);
   
-    app.use('/api/shelfs', router);
+    app.use('/api/shelfs',  [authJwt.verifyToken],router);
   };
