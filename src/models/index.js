@@ -31,11 +31,11 @@ db.role.belongsToMany(db.user, {
   otherKey: "userId"
 });
 
-// db.shelf.belongsToMany(db.book, {
-//   through: "shelfs_books",
-//   foreignKey: "shelfId",
-//   otherKey: "bookId"
-// });
+db.shelf.belongsToMany(db.book, {
+  through: "shelfs_books",
+  foreignKey: "shelfId",
+  otherKey: "bookId"
+});
 
 db.user.belongsToMany(db.role, {
   through: "user_roles",

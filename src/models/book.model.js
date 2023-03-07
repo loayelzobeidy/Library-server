@@ -8,7 +8,14 @@ module.exports = (sequelize, Sequelize) => {
       },
       published: {
         type: Sequelize.BOOLEAN
-      }
+      },
+      shelf:{
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'shelfs',
+            key: 'id'
+        }
+    }
     });
   
     return Book;

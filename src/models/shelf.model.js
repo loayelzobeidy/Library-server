@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
       },
       capacity: {
         type: Sequelize.TINYINT
-      }
+      },
+
     });
   
     return Shelf;

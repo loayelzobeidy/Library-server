@@ -2,7 +2,6 @@ const db = require("../models");
 const Book = db.book;
 const Op = db.Sequelize.Op;
 
-console.log("import 2",Book);
 
 exports.create = (req, res) => {
     if (!req.body.title) {
@@ -11,12 +10,14 @@ exports.create = (req, res) => {
       });
       return;
     }
+    console.log("import 2",req.body);
 
   
     const book = {
       title: req.body.title,
       description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      published: req.body.published ? req.body.published : false,
+      shelf:req.body.shelf
     };
   
     Book.create(book)
@@ -24,6 +25,7 @@ exports.create = (req, res) => {
         res.send(data);
       })
       .catch(err => {
+        console.log("here catch error while creating book")
         res.status(500).send({
           message:
             err.message || "Some error occurred while creating the Book."
