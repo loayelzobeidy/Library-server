@@ -31,17 +31,30 @@ db.role.belongsToMany(db.user, {
   otherKey: "userId"
 });
 
-db.shelf.belongsToMany(db.book, {
-  through: "shelfs_books",
-  foreignKey: "shelfId",
-  otherKey: "bookId"
-});
+// db.shelf.belongsToMany(db.book, {
+//   through: "shelfs_books",
+//   foreignKey: "shelfId",
+//   otherKey: "bookId"
+// });
 
 db.user.belongsToMany(db.role, {
   through: "user_roles",
   foreignKey: "userId",
   otherKey: "roleId"
 });
+db.role.create({
+  id: 1,
+  name: "user"
+});
 
+db.role.create({
+  id: 2,
+  name: "moderator"
+});
+
+db.role.create({
+  id: 3,
+  name: "admin"
+});
 db.ROLES = ["user", "admin", "moderator"];  
 module.exports = db

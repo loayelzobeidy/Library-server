@@ -29,7 +29,6 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
-
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the university library application" });

@@ -5,18 +5,18 @@ module.exports = app => {
   
     var router = require("express").Router();
 
-    router.post("/",  [authJwt.verifyToken],shelfs.create);
+    router.post("/",  [authJwt.verifyToken, authJwt.isAdmin],shelfs.create);
   
     router.get("/",  [authJwt.verifyToken],shelfs.findAll);
   
   
     router.get("/:id", [authJwt.verifyToken], shelfs.findOne);
   
-    router.put("/:id", [authJwt.verifyToken], shelfs.update);
+    router.put("/:id", [authJwt.verifyToken, authJwt.isAdmin], shelfs.update);
   
-    router.delete("/:id",  [authJwt.verifyToken],shelfs.delete);
+    router.delete("/:id",  [authJwt.verifyToken, authJwt.isAdmin],shelfs.delete);
   
-    router.delete("/", [authJwt.verifyToken], shelfs.deleteAll);
+    router.delete("/", [authJwt.verifyToken, authJwt.isAdmin], shelfs.deleteAll);
   
     app.use('/api/shelfs',  [authJwt.verifyToken],router);
   };

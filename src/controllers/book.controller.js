@@ -10,14 +10,14 @@ exports.create = (req, res) => {
       });
       return;
     }
-    console.log("import 2",req.body);
+    console.log("import 2",req.body.shelf);
 
   
     const book = {
       title: req.body.title,
       description: req.body.description,
       published: req.body.published ? req.body.published : false,
-      shelf:req.body.shelf
+      shelfId:req.body.shelf
     };
   
     Book.create(book)
@@ -35,9 +35,11 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    console.log("condition from findall=> " ,condition)
   
     Book.findAll({ where: condition })
       .then(data => {
+        console.log("data from db=> " ,data)
         res.send(data);
       })
       .catch(err => {

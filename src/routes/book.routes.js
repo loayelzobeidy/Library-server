@@ -6,7 +6,7 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new Book
-    router.post("/", [authJwt.verifyToken],books.create);
+    router.post("/", [authJwt.verifyToken, authJwt.isModerator],books.create);
   
     // Retrieve all Books
     router.get("/",  [authJwt.verifyToken],books.findAll);
@@ -18,13 +18,13 @@ module.exports = app => {
     router.get("/:id",  [authJwt.verifyToken],books.findOne);
   
     // Update a Book with id
-    router.put("/:id", [authJwt.verifyToken], books.update);
+    router.put("/:id", [authJwt.verifyToken, authJwt.isModerator], books.update);
   
     // Delete a Book with id
-    router.delete("/:id", [authJwt.verifyToken], books.delete);
+    router.delete("/:id", [authJwt.verifyToken, authJwt.isModerator], books.delete);
   
     // Delete all Books
-    router.delete("/", [authJwt.verifyToken], books.deleteAll);
+    router.delete("/", [authJwt.verifyToken, authJwt.isModerator], books.deleteAll);
   
     app.use('/api/books', router);
   };

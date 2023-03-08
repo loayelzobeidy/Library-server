@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
       published: {
         type: Sequelize.BOOLEAN
       },
-      shelf:{
+      shelfId:{
         type: Sequelize.INTEGER,
         references: {
             model: 'shelfs',
